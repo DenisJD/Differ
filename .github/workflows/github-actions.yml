@@ -23,6 +23,7 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
+          build-root-directory: app
           gradle-version: wrapper
           arguments: build
       - name: Test & publish code coverage
