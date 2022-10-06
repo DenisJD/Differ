@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hexlet.code.DifferTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-10-06T09:05:34" hostname="LAPTOP-ODOQ872F" time="0.562">
+  <properties/>
+  <testcase name="differTest()" classname="hexlet.code.DifferTest" time="0.562"/>
+  <system-out><![CDATA[{
+    val1: abcd
+  - val2: 50
+  + val2: 80
+  - val3: 1234
+  - val4: false
+  + val4: true
+  + val5: yes
+}
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
