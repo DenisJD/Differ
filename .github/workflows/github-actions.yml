@@ -24,7 +24,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           build-root-directory: app
-          gradle-version: wrapper
+          gradle-version: release-candidate
           arguments: build
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
