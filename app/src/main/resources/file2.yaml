@@ -1,0 +1,11 @@
+---
+name: "Alex"
+surname: "Ivanov"
+age: 21
+email: "alex_iv@mail.com"
+value_true: true
+value: false
+dogs:
+  - dog1
+  - dog2
+  - dog3
