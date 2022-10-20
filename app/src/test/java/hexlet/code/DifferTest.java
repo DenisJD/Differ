@@ -56,8 +56,7 @@ public class DifferTest {
                         Property 'obj1' was added with value: [complex value]
                         Property 'setting1' was updated. From 'Some value' to 'Another value'
                         Property 'setting2' was updated. From 200 to 300
-                        Property 'setting3' was updated. From true to 'none'
-                        """;
+                        Property 'setting3' was updated. From true to 'none'""";
         String actual = generate("src/test/resources/file1Test.json", "src/test/resources/file2Test.json", "plain");
         Assertions.assertEquals(expectedJsonPlain, actual);
     }
@@ -104,8 +103,7 @@ public class DifferTest {
                         Property 'dogs' was updated. From [complex value] to [complex value]
                         Property 'email' was updated. From 'alex@mail.com' to 'alex_iv@mail.com'
                         Property 'surname' was updated. From 'Petrov' to 'Ivanov'
-                        Property 'value' was updated. From true to false
-                        """;
+                        Property 'value' was updated. From true to false""";
         String actual = generate("src/test/resources/file1Test.yaml", "src/test/resources/file2Test.yaml", "plain");
         Assertions.assertEquals(expectedYamlPlain, actual);
     }
