@@ -17,14 +17,16 @@ compileJava {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
     implementation 'info.picocli:picocli:4.6.3'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4.2'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.4'
 }
 
 test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
 }
 
 application {
@@ -36,6 +38,7 @@ checkstyle {
 }
 
 jacocoTestReport {
+    dependsOn test
     reports {
         xml.required = true
     }
