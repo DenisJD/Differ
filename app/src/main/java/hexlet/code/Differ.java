@@ -1,38 +1,25 @@
 package hexlet.code;
 
-import hexlet.code.formatters.Json;
-import hexlet.code.formatters.Plain;
-import hexlet.code.formatters.Stylish;
-
+import java.nio.file.Files;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
 
 public class Differ {
-    public static String generate(String file1, String file2, String outputStyle) throws Exception {
-        Map<String, Object> firstMap = Parser.fileToMap(file1);
-        Map<String, Object> secondMap = Parser.fileToMap(file2);
-        Set<String> allSortedKeys = keySorter(firstMap, secondMap);
-        return switch (outputStyle.toLowerCase()) {
-            case "stylish" ->
-                    Stylish.stylishOutput(firstMap, secondMap, allSortedKeys);
-            case "plain" ->
-                    Plain.plainOutput(firstMap, secondMap, allSortedKeys);
-            case "json" ->
-                    Json.jsonOutput(firstMap, secondMap, allSortedKeys);
-            default ->
-                    "Format \"" + outputStyle + "\" is invalid! Correct formats: \"stylish\", ";
-        };
+    public static String generate(String filepath1, String filepath2, String outputStyle) throws Exception {
+        String contentOfFirstFile = Files.readString(Utils.convertPathToFullPath(filepath1));
+        String contentOfSecondFile = Files.readString(Utils.convertPathToFullPath(filepath2));
+
+        String formatOfFirstFile = Utils.getDataFormat(filepath1);
+        String formatOfSecondFile = Utils.getDataFormat(filepath2);
+
+        Map<String, Object> firstMap = Parser.fileToMap(contentOfFirstFile, formatOfFirstFile);
+        Map<String, Object> secondMap = Parser.fileToMap(contentOfSecondFile, formatOfSecondFile);
+
+        Map<String, Object> diffMap = DiffBuilder.getDifferences(firstMap, secondMap);
+
+        return Formatter.getOutput(diffMap, outputStyle);
     }
 
-    public static String generate(String file1, String file2) throws Exception {
-        return generate(file1, file2, "stylish");
-    }
-
-    public static Set<String> keySorter(Map<String, Object> firstMap, Map<String, Object> secondMap) {
-        Set<String> sortedKey = new TreeSet<>();
-        sortedKey.addAll(firstMap.keySet());
-        sortedKey.addAll(secondMap.keySet());
-        return sortedKey;
+    public static String generate(String filepath1, String filepath2) throws Exception {
+        return generate(filepath1, filepath2, "stylish");
     }
 }

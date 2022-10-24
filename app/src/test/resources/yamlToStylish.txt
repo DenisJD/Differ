@@ -1,0 +1,15 @@
+{
+  - age: 18
+  + age: 21
+  + car: null
+  - dogs: [dog1, dog2]
+  + dogs: [dog1, dog2, dog3]
+  - email: alex@mail.com
+  + email: alex_iv@mail.com
+    name: Alex
+  - surname: Petrov
+  + surname: Ivanov
+  - value: true
+  + value: false
+    value_true: true
+}

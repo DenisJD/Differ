@@ -22,7 +22,7 @@ class App implements Callable<String> {
     private String filepath2;
 
     @Option(names = {"-f", "--format"},
-            description = "output format [default: stylish]",
+            description = "output format: stylish/plain/json; [default: stylish]",
             defaultValue = "stylish",
             paramLabel = "format")
     private String format;

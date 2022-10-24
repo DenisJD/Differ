@@ -2,6 +2,7 @@
 name: "Alex"
 surname: "Ivanov"
 age: 21
+car: null
 email: "alex_iv@mail.com"
 value_true: true
 value: false

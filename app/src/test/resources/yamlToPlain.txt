@@ -1,0 +1,6 @@
+Property 'age' was updated. From 18 to 21
+Property 'car' was added with value: null
+Property 'dogs' was updated. From [complex value] to [complex value]
+Property 'email' was updated. From 'alex@mail.com' to 'alex_iv@mail.com'
+Property 'surname' was updated. From 'Petrov' to 'Ivanov'
+Property 'value' was updated. From true to false
