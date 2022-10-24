@@ -11,6 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class DifferTest {
 
+    private static final int TEST_INT = 5;
+    private static final int[] TEST_ARRAY = new int[]{1, 2, 3};
+
     @Test
     public void differTestJsonToStylish() throws Exception {
         String actualStylish = generate("src/test/resources/file1Test.json", "src/test/resources/file2Test.json");
@@ -75,9 +78,9 @@ public class DifferTest {
     @Test
     public void correctPlainValue() {
         assertNull(Utils.correctPlainValue(null));
-        assertEquals("\'test\'", Utils.correctPlainValue("test"));
-        assertEquals("5", Utils.correctPlainValue(5));
+        assertEquals("'test'", Utils.correctPlainValue("test"));
+        assertEquals("5", Utils.correctPlainValue(TEST_INT));
         assertEquals("false", Utils.correctPlainValue(false));
-        assertEquals("[complex value]", Utils.correctPlainValue(new int[]{1, 2, 3}));
+        assertEquals("[complex value]", Utils.correctPlainValue(TEST_ARRAY));
     }
 }
