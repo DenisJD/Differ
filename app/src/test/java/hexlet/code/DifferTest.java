@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static hexlet.code.Differ.generate;
+import static hexlet.code.Differ.getDataFormat;
+import static hexlet.code.formatters.Plain.correctPlainValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -64,9 +66,9 @@ public class DifferTest {
 
     @Test
     public void getDataFormatTest() {
-        String actualJson = Utils.getDataFormat("src/main/resources/file1.json");
-        String actualYaml = Utils.getDataFormat("src/main/resources/file1.yaml");
-        String actualYml = Utils.getDataFormat("src/main/resources/file1.yml");
+        String actualJson = getDataFormat("src/main/resources/file1.json");
+        String actualYaml = getDataFormat("src/main/resources/file1.yaml");
+        String actualYml = getDataFormat("src/main/resources/file1.yml");
         String expectedJson = "JSON";
         String expectedYaml = "YAML";
         String expectedYml = "YML";
@@ -76,11 +78,11 @@ public class DifferTest {
     }
 
     @Test
-    public void correctPlainValue() {
-        assertNull(Utils.correctPlainValue(null));
-        assertEquals("'test'", Utils.correctPlainValue("test"));
-        assertEquals("5", Utils.correctPlainValue(TEST_INT));
-        assertEquals("false", Utils.correctPlainValue(false));
-        assertEquals("[complex value]", Utils.correctPlainValue(TEST_ARRAY));
+    public void correctPlainValueTest() {
+        assertNull(correctPlainValue(null));
+        assertEquals("'test'", correctPlainValue("test"));
+        assertEquals("5", correctPlainValue(TEST_INT));
+        assertEquals("false", correctPlainValue(false));
+        assertEquals("[complex value]", correctPlainValue(TEST_ARRAY));
     }
 }

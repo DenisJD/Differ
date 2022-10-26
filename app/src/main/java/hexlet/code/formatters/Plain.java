@@ -1,7 +1,6 @@
 package hexlet.code.formatters;
 
 import hexlet.code.DiffValue;
-import hexlet.code.Utils;
 import hexlet.code.Value;
 
 import java.util.Map;
@@ -16,7 +15,7 @@ public class Plain {
                         .append("Property '")
                         .append(key)
                         .append("' was added with value: ")
-                        .append(Utils.correctPlainValue(value.getValue()))
+                        .append(correctPlainValue(value.getValue()))
                         .append("\n");
                 case DELETED -> result
                         .append("Property '")
@@ -27,9 +26,9 @@ public class Plain {
                         .append("Property '")
                         .append(key)
                         .append("' was updated. From ")
-                        .append(Utils.correctPlainValue(value.getOldValue()))
+                        .append(correctPlainValue(value.getOldValue()))
                         .append(" to ")
-                        .append(Utils.correctPlainValue(value.getNewValue()))
+                        .append(correctPlainValue(value.getNewValue()))
                         .append("\n");
                 case UNCHANGED -> result.append("");
                 default -> throw new RuntimeException();
@@ -37,5 +36,18 @@ public class Plain {
 
         }
         return result.toString().trim();
+    }
+
+    public static String correctPlainValue(Object value) {
+        if (value == null) {
+            return null;
+        } else if (value instanceof String) {
+            return "'" + value + "'";
+        } else if (value instanceof Integer) {
+            return value.toString();
+        } else if (value.equals(false) || value.equals(true)) {
+            return value.toString();
+        }
+        return "[complex value]";
     }
 }

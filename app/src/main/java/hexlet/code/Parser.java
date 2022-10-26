@@ -8,8 +8,8 @@ import java.util.Map;
 
 public class Parser {
 
-    public static Map<String, Object> fileToMap(String content, String fileFormat) throws Exception {
-        switch (FileFormat.valueOf(fileFormat)) {
+    public static Map<String, Object> fileToMap(String content, String formatType) throws Exception {
+        switch (FileFormat.valueOf(formatType)) {
             case JSON -> {
                 return jsonFileToMap(content);
             }
@@ -17,7 +17,7 @@ public class Parser {
                 return yamlFileToMap(content);
             }
             default ->
-                    throw new RuntimeException(fileFormat + "is incorrect :(");
+                    throw new RuntimeException(formatType + "is incorrect :(");
         }
     }
 
