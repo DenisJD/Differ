@@ -8,26 +8,26 @@ import java.util.Map;
 
 public class Parser {
 
-    public static Map<String, Object> fileToMap(String content, String formatType) throws Exception {
+    public static Map<String, Object> getMap(String content, String formatType) throws Exception {
         switch (FileFormat.valueOf(formatType)) {
             case JSON -> {
-                return jsonFileToMap(content);
+                return parseJson(content);
             }
             case YAML, YML -> {
-                return yamlFileToMap(content);
+                return parseYaml(content);
             }
             default ->
                     throw new RuntimeException(formatType + "is incorrect :(");
         }
     }
 
-    public static Map<String, Object> jsonFileToMap(String content) throws Exception {
+    public static Map<String, Object> parseJson(String content) throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(content, new TypeReference<>() {
         });
     }
 
-    public static Map<String, Object> yamlFileToMap(String content) throws Exception {
+    public static Map<String, Object> parseYaml(String content) throws Exception {
         ObjectMapper mapper = new YAMLMapper();
         return mapper.readValue(content, new TypeReference<>() {
         });

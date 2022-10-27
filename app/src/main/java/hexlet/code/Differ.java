@@ -13,8 +13,8 @@ public class Differ {
         String formatOfFirstFile = getDataFormat(filepath1);
         String formatOfSecondFile = getDataFormat(filepath2);
 
-        Map<String, Object> firstMap = Parser.fileToMap(contentOfFirstFile, formatOfFirstFile);
-        Map<String, Object> secondMap = Parser.fileToMap(contentOfSecondFile, formatOfSecondFile);
+        Map<String, Object> firstMap = Parser.getMap(contentOfFirstFile, formatOfFirstFile);
+        Map<String, Object> secondMap = Parser.getMap(contentOfSecondFile, formatOfSecondFile);
 
         Map<String, Object> diffMap = DiffBuilder.getDifferences(firstMap, secondMap);
 
